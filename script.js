@@ -17,14 +17,24 @@ function generatePassword () {
   var lowercaseLetters ="abcdefghijklmnopqrstuvwxyz";
   var symbols = "~`@#$%^&*()_>-=+;:',<./?\|[]{}";
   var numbers = "0123456789";
-  var length =
- /*Checking to see what myGeneratedPassword does in the console */
+  var length = 128;
+  preventDefault();
+  /*Checking to see what myGeneratedPassword does in the console */
   console.log(myGeneratedPassword);
+  var newPassword = generatePassword([uppercaseLetters + lowercaseLetters + symbols + numbers].length);
+  if (newPassword === 0) {
+    "Please choose one of Character types for your password!"
+    return;
+  }
 
+  for(var i=0; i <= newPassword.length; i++) {
+    
+  }
 
+/*I need to generate a random password*/
   return myGeneratedPassword;
 }
-/*I need a alert*/
+/*I need a alert for the password after displaying*/
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
