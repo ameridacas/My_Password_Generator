@@ -9,21 +9,22 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
+/*I need to make an if statement, how long the characters should be and refreshing the page  */
+/*It needs to be 8 to 128 characters long*/
 function generatePassword () {
   var myGeneratedPassword = "";
   var uppercaseLetters ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowercaseLetters ="abcdefghijklmnopqrstuvwxyz";
   var symbols = "~`@#$%^&*()_>-=+;:',<./?\|[]{}";
   var numbers = "0123456789";
-  
-  var length
-  var uppercase
-  var lowercase
-  var symbols
-  var numbers
+  var length =
+ /*Checking to see what myGeneratedPassword does in the console */
+  console.log(myGeneratedPassword);
+
 
   return myGeneratedPassword;
 }
+/*I need a alert*/
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
