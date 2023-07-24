@@ -23,19 +23,22 @@ function generatePassword () {
   /*Checking to see what myGeneratedPassword does in the console */
   console.log(myGeneratedPassword);
   var newPassword = generatePassword([uppercaseLetters + lowercaseLetters + symbols + numbers].length);
+ 
   if (newPassword === 0) {
-   alert("Please choose one of Character types for your password!")
+   alert("Please choose one of Character types for your password!");
     return;
   }
 
   for(var i=0; i <= newPassword.length; i++) {
     
-  }
-
+  } if (newPassword >= 128) {
+    alert("You Have Reached the Maximum Character length!");
+  
 /*I need to generate a random password*/
   return myGeneratedPassword;
-}
+}else{
 /*I need a alert for the password after displaying or not displaying at all*/
-alert("Please Enter a password between 8 to 128 characters!")
+alert("Please Enter a password between 8 to 128 characters!");
+}}
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
