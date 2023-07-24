@@ -77,6 +77,12 @@ alert("Please Enter a password between 8 to 128 characters!");
 }}
 
 /*Ill use an event listener to get the password from local stoarge */
+window.addEventListener("load", function() {
+  var theGeneratedPassword = localStorage.getItem("theGeneratedPassword");
+  if (theGeneratedPassword) {
+    
+  }
+})
 localStorage.getItem("theGeneratedPassword");
 
 // Add event listener to generate button
