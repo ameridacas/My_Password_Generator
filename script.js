@@ -35,22 +35,36 @@ function generatePassword () {
  uppercaseLetters, symbols,and numbers */
   if(length >= 8 && length <= 128) {
     /*confirm displays the message of the categories the user wants to include in the generated password*/
-    var upperCase = confirm("Need upperCase Letters?");
-    var lowerCase = confirm("Need lowerCase Letters?");
+    var addUpperCase = confirm("Need upperCase Letters?");
+    var addLowerCase = confirm("Need lowerCase Letters?");
     var addSymbols = confirm("Need symbols?");
     var addNumbers = confirm("Need upperCase Letters?");
   }
  
   /*This displays the alert to chose a password if there isnt any characters selected */
-  if (newPassword === 0) {
+  if (newPassword !== (addUpperCase || addLowerCase || addSymbols || addNumbers)) {
    alert("Please choose one of Character types for your password!");
     return;
+  }
+  /*the if statement adds that the random password will have the value of uppercase letters, lowercase letters,
+  symbols, and numbers if the user selects that type*/
+  if (addUpperCase) {
+      randomPassword += addUpperCase;
+  }
+  if (addLowerCase) {
+      randomPassword += addLowerCase;
+  }
+  if (addSymbols) {
+      randomPassword += addSymbols;
+  }
+  if (addNumbers) {
+      randomPassword += addNumbers;
   }
 
 /*for loop if the value is <= the new length it will create a password with random characters based on the password length*/
   for(var i=0; i <= newPassword.length; i++) {
-  const random = Math.floor(Math.random() * newPassword.length);
-  myGeneratedPassword += newPassword[random];
+  const randomPassword = Math.floor(Math.random() * newPassword.length);
+  myGeneratedPassword += newPassword[randomPassword];
   /*When it reaches 128 or over 128 it pops up the alert msg */  
   } if (newPassword >= 128) {
     alert("You Have Reached the Maximum Character length!");
