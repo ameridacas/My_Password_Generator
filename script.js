@@ -9,6 +9,8 @@ function writePassword() {
   passwordText.value = password;
   /*Displays Password Text*/
   passwordText.append(password);
+  /*I need a place to save/store the password using local storage */
+  localStorage.setItem("theGeneratedPassword", password);
 
 }
 /*I need to make an if statement, how long the characters should be and refreshing the page  */
@@ -32,11 +34,12 @@ function generatePassword () {
  /*This statement says if its equal to or between 8 and 128 it will include variables lowerCase,
  uppercaseLetters, symbols,and numbers */
   if(length >= 8 && length <= 128) {
-    var
+    /*confirm displays the message of the categories the user wants to include in the generated password*/
+    var upperCase = confirm("Need upperCase Letters?");
+    var lowerCase = confirm("Need lowerCase Letters?");
+    var addSymbols = confirm("Need symbols?");
+    var addNumbers = confirm("Need upperCase Letters?");
   }
- 
- 
- 
  
   /*This displays the alert to chose a password if there isnt any characters selected */
   if (newPassword === 0) {
@@ -58,5 +61,9 @@ function generatePassword () {
 /*I need a alert for the password after displaying or not displaying at all*/
 alert("Please Enter a password between 8 to 128 characters!");
 }}
+
+/*Ill use an event listener to get the password from local stoarge */
+localStorage.getItem("theGeneratedPassword");
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
