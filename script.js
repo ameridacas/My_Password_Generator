@@ -80,7 +80,9 @@ alert("Please Enter a password between 8 to 128 characters!");
 window.addEventListener("load", function() {
   var theGeneratedPassword = localStorage.getItem("theGeneratedPassword");
   if (theGeneratedPassword) {
-    
+    /*I need to get the generated password to id of password and append the text created to show up there*/
+    var passwordText = document.querySelector("#password");
+    passwordText.append(theGeneratedPassword);
   }
 })
 localStorage.getItem("theGeneratedPassword");
