@@ -19,6 +19,7 @@ function generatePassword () {
   var lowercaseLetters ="abcdefghijklmnopqrstuvwxyz";
   var symbols = "~`@#$%^&*()_>-=+;:',<./?\|[]{}";
   var numbers = "0123456789";
+  /*Prompt is like an alert and confirm they all display a msg except prompt  */
   var length = parseInt(prompt("Enter password length between 8 to 128 Characters!"));
   /*Added a variable to have an empty string as placeholder for the random password */
   var newPassword = "";
