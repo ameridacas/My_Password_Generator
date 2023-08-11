@@ -74,6 +74,7 @@ function generatePassword () {
 }else{
 /*I need a alert for the password after displaying or not displaying at all*/
 alert("Please Enter a password between 8 to 128 characters!");
+return;
 }}
 
 /*Ill use an event listener to get the password from local stoarge */
@@ -85,7 +86,6 @@ window.addEventListener("load", function() {
     passwordText.append(theGeneratedPassword);
   }
 })
-localStorage.getItem("theGeneratedPassword");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
