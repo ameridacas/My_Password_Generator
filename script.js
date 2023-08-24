@@ -23,6 +23,10 @@ function generatePassword () {
   var numbers = "0123456789";
   /*Prompt is like an alert and confirm they all display a msg except prompt  */
   var lengthInput = prompt("Enter password length between 8 to 128 Characters!");
+  if (!(/^\d+$/.test(lengthInput))) { //this makes sure the user enters a number not letters or symbols
+    alert("Please enter a numeric password length!");
+    return ""; // Empty string
+  }
   var length = parseInt(lengthInput); //converts input into an integer
  
   //preventDefault();
@@ -32,7 +36,7 @@ function generatePassword () {
 
  /*This statement says if its equal to or between 8 and 128 it will include variables lowerCase,
  uppercaseLetters, symbols,and numbers */
-  if(!isNaN(length) || length < 8 || length > 128) { //isNaN() coverts value to a number to test
+  if(length <= 7 || length >= 129) { //This displays the message if the user enters a number length <=7 or >=129 if the length is between 8-128 the input will be valid
     /*I need a alert for the password after displaying or not displaying at all*/
     alert("Please Enter a password between 8 to 128 characters!");
     return ""; //Empty string
