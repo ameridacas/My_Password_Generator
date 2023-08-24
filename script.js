@@ -6,7 +6,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   /*clears the password*/
-  passwordText.value = password;
+  passwordText.value = password; //this so it works with the read only attribute on html
   /*Displays Password Text*/
   passwordText.append(password);
   /*I need a place to save/store the password using local storage */
@@ -22,60 +22,69 @@ function generatePassword () {
   var symbols = "~`@#$%^&*()_>-=+;:',<./?\|[]{}";
   var numbers = "0123456789";
   /*Prompt is like an alert and confirm they all display a msg except prompt  */
-  var length = parseInt(prompt("Enter password length between 8 to 128 Characters!"));
-  /*Added a variable to have an empty string as placeholder for the random password */
-  var newPassword = "";
+  var lengthInput = prompt("Enter password length between 8 to 128 Characters!");
+  var length = parseInt(lengthInput); //converts input into an integer
+ 
   //preventDefault();
 
   /*Checking to see what myGeneratedPassword does in the console */
-  console.log(myGeneratedPassword);
+  //console.log(myGeneratedPassword);
 
-  var newPassword = generatePassword([uppercaseLetters + lowercaseLetters + symbols + numbers]);
+  //var newPassword = generatePassword([uppercaseLetters + lowercaseLetters + symbols + numbers]);
  /*This statement says if its equal to or between 8 and 128 it will include variables lowerCase,
  uppercaseLetters, symbols,and numbers */
-  if(length >= 8 && length <= 128) {
+  if(!isNaN(length) || length < 8 || length > 128) { //isNaN() coverts value to a number to test
+    /*I need a alert for the password after displaying or not displaying at all*/
+    alert("Please Enter a password between 8 to 128 characters!");
+    return ""; //Empty string
+    }
+
     /*confirm displays the message of the categories the user wants to include in the generated password*/
     var addUpperCase = confirm("Need upperCase Letters?");
     var addLowerCase = confirm("Need lowerCase Letters?");
     var addSymbols = confirm("Need symbols?");
-    var addNumbers = confirm("Need upperCase Letters?");
-  }
+    var addNumbers = confirm("Need numbers?");
+  
  
   /*This displays the alert to chose a password if there isnt any characters selected */
-  if (newPassword !== (addUpperCase || addLowerCase || addSymbols || addNumbers)) {
+  if (!(addUpperCase || addLowerCase || addSymbols || addNumbers)) {
    alert("Please choose one of Character types for your password!");
-    return;
+   return "";
   }
+
+   /*Added a variable to have an empty string as placeholder for the random password */
+   var newPassword = "";
   /*the if statement adds that the random password will have the value of uppercase letters, lowercase letters,
   symbols, and numbers if the user selects that type*/
   if (addUpperCase) {
-      randomPassword += addUpperCase;
+      newPassword += uppercaseLetters;
   }
   if (addLowerCase) {
-      randomPassword += addLowerCase;
+      newPassword += lowercaseLetters;// adding string to the var
   }
   if (addSymbols) {
-      randomPassword += addSymbols;
+      newPassword += symbols;
   }
   if (addNumbers) {
-      randomPassword += addNumbers;
+      newPassword += numbers;
   }
 
+  if (newPassword === "") {
+    alert("You haven't selected any character types for your password!");
+    return "";
+  }
 /*for loop if the value is <= the new length it will create a password with random characters based on the password length*/
   for(var i=0; i <= newPassword.length; i++) {
   const randomPassword = Math.floor(Math.random() * newPassword.length);
   myGeneratedPassword += newPassword[randomPassword];
+
   /*When it reaches 128 or over 128 it pops up the alert msg */  
-  } if (newPassword >= 128) {
+  } if (myGeneratedPassword.length >= 128) {
     alert("You Have Reached the Maximum Character length!");
-  
+  }
 /*I need to generate a random password*/
   return myGeneratedPassword;
-}else{
-/*I need a alert for the password after displaying or not displaying at all*/
-alert("Please Enter a password between 8 to 128 characters!");
-return;
-}}
+}
 
 /*Ill use an event listener to get the password from local stoarge */
 window.addEventListener("load", function() {
@@ -85,7 +94,13 @@ window.addEventListener("load", function() {
     var passwordText = document.querySelector("#password");
     passwordText.append(theGeneratedPassword);
   }
-})
+});
+
+//checking to see if prompt works
+//window.addEventListener("load", function () {
+//  var length = prompt("Enter a length:");
+//  console.log("Length entered:", length);
+//});
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
