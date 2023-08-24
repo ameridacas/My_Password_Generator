@@ -30,7 +30,6 @@ function generatePassword () {
   /*Checking to see what myGeneratedPassword does in the console */
   //console.log(myGeneratedPassword);
 
-  //var newPassword = generatePassword([uppercaseLetters + lowercaseLetters + symbols + numbers]);
  /*This statement says if its equal to or between 8 and 128 it will include variables lowerCase,
  uppercaseLetters, symbols,and numbers */
   if(!isNaN(length) || length < 8 || length > 128) { //isNaN() coverts value to a number to test
@@ -69,10 +68,6 @@ function generatePassword () {
       newPassword += numbers;
   }
 
-  if (newPassword === "") {
-    alert("You haven't selected any character types for your password!");
-    return "";
-  }
 /*for loop if the value is <= the new length it will create a password with random characters based on the password length*/
   for(var i=0; i <= newPassword.length; i++) {
   const randomPassword = Math.floor(Math.random() * newPassword.length);
@@ -95,12 +90,6 @@ window.addEventListener("load", function() {
     passwordText.append(theGeneratedPassword);
   }
 });
-
-//checking to see if prompt works
-//window.addEventListener("load", function () {
-//  var length = prompt("Enter a length:");
-//  console.log("Length entered:", length);
-//});
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
