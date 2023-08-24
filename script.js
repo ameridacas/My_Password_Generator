@@ -23,12 +23,12 @@ function generatePassword () {
   var numbers = "0123456789";
   /*Prompt is like an alert and confirm they all display a msg except prompt  */
   var lengthInput = prompt("Enter password length between 8 to 128 Characters!");
+  var length = parseInt(lengthInput); //converts input into an integer
+ 
   if (!(/^\d+$/.test(lengthInput))) { //this makes sure the user enters a number not letters or symbols
     alert("Please enter a numeric password length!");
     return ""; // Empty string
   }
-  var length = parseInt(lengthInput); //converts input into an integer
- 
   //preventDefault();
 
   /*Checking to see what myGeneratedPassword does in the console */
